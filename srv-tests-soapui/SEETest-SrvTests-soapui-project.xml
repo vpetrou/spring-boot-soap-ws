@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="91b37e0a-301b-4934-94ef-9a0e0a9353ac" activeEnvironment="Default" name="SEETest-SrvTests" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="e193a502-e95c-44f0-bc93-109e116da633" wsaVersion="NONE" name="ContactsPortSoap11" type="wsdl" bindingName="{http://www.vpetrou.com/article-ws}ContactsPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/soapws/contacts.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/soapws/contacts.wsdl"><con:part><con:url>http://localhost:8080/soapws/contacts.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.vpetrou.com/article-ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.vpetrou.com/contact-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.vpetrou.com/article-ws">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.vpetrou.com/contact-ws" xmlns:tns="http://www.vpetrou.com/contact-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getContactByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contactId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getContactByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contactInfo" type="tns:contactInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="contactInfo">
+        <xs:sequence>
+          <xs:element name="contactId" type="xs:long"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="nickName" type="xs:string"/>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="phone" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getContactByNameRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getContactByNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="contactInfo" type="tns:contactInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllContactsRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllContactsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="contactInfo" type="tns:contactInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="addContactRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="nickName" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="contactInfo" type="tns:contactInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateContactRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contactInfo" type="tns:contactInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteContactRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contactId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addContactResponse">
+    <wsdl:part element="sch:addContactResponse" name="addContactResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContactByNameResponse">
+    <wsdl:part element="sch:getContactByNameResponse" name="getContactByNameResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteContactResponse">
+    <wsdl:part element="sch:deleteContactResponse" name="deleteContactResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContactByIdRequest">
+    <wsdl:part element="sch:getContactByIdRequest" name="getContactByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContactByIdResponse">
+    <wsdl:part element="sch:getContactByIdResponse" name="getContactByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllContactsResponse">
+    <wsdl:part element="sch:getAllContactsResponse" name="getAllContactsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateContactRequest">
+    <wsdl:part element="sch:updateContactRequest" name="updateContactRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContactByNameRequest">
+    <wsdl:part element="sch:getContactByNameRequest" name="getContactByNameRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllContactsRequest">
+    <wsdl:part element="sch:getAllContactsRequest" name="getAllContactsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addContactRequest">
+    <wsdl:part element="sch:addContactRequest" name="addContactRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteContactRequest">
+    <wsdl:part element="sch:deleteContactRequest" name="deleteContactRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateContactResponse">
+    <wsdl:part element="sch:updateContactResponse" name="updateContactResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ContactsPort">
+    <wsdl:operation name="addContact">
+      <wsdl:input message="tns:addContactRequest" name="addContactRequest"></wsdl:input>
+      <wsdl:output message="tns:addContactResponse" name="addContactResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactByName">
+      <wsdl:input message="tns:getContactByNameRequest" name="getContactByNameRequest"></wsdl:input>
+      <wsdl:output message="tns:getContactByNameResponse" name="getContactByNameResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteContact">
+      <wsdl:input message="tns:deleteContactRequest" name="deleteContactRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteContactResponse" name="deleteContactResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactById">
+      <wsdl:input message="tns:getContactByIdRequest" name="getContactByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getContactByIdResponse" name="getContactByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllContacts">
+      <wsdl:input message="tns:getAllContactsRequest" name="getAllContactsRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllContactsResponse" name="getAllContactsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateContact">
+      <wsdl:input message="tns:updateContactRequest" name="updateContactRequest"></wsdl:input>
+      <wsdl:output message="tns:updateContactResponse" name="updateContactResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContactsPortSoap11" type="tns:ContactsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addContactRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addContactResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactByName">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getContactByNameRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContactByNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteContactRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteContactResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getContactByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContactByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllContacts">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllContactsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllContactsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateContact">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateContactRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateContactResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContactsPortService">
+    <wsdl:port binding="tns:ContactsPortSoap11" name="ContactsPortSoap11">
+      <soap:address location="http://localhost:8080/soapws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/soapws</con:endpoint></con:endpoints><con:operation id="aef0aa9f-6467-460c-900c-811334484bb7" isOneWay="false" action="" name="addContact" bindingOperationName="addContact" type="Request-Response" outputName="addContactResponse" inputName="addContactRequest" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="7656eac4-50a3-4a82-8c24-0a00fa70da55" isOneWay="false" action="" name="deleteContact" bindingOperationName="deleteContact" type="Request-Response" outputName="deleteContactResponse" inputName="deleteContactRequest" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="934b9dbe-371f-4476-bc23-e6c09fc7a57a" isOneWay="false" action="" name="getAllContacts" bindingOperationName="getAllContacts" type="Request-Response" outputName="getAllContactsResponse" inputName="getAllContactsRequest" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="f44a3070-3dcd-4fff-a523-1cb078a50dee" isOneWay="false" action="" name="getContactById" bindingOperationName="getContactById" type="Request-Response" outputName="getContactByIdResponse" inputName="getContactByIdRequest" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="6a87eb39-eaca-490d-b074-8232e15ea3a6" isOneWay="false" action="" name="getContactByName" bindingOperationName="getContactByName" type="Request-Response" outputName="getContactByNameResponse" inputName="getContactByNameRequest" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation><con:operation id="7df890cb-88b7-459b-8aa6-55f98f852d74" isOneWay="false" action="" name="updateContact" bindingOperationName="updateContact" type="Request-Response" outputName="updateContactResponse" inputName="updateContactRequest" receivesAttachments="false" sendsAttachments="false"><con:settings/></con:operation></con:interface><con:testSuite id="7816dc48-8750-4473-baa3-40ac21b1d57f" name="TS-SRV-AddContacts"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="66767102-522f-44d2-a23f-57153e22b4fa" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC-SRV-AddContacts-P-001" searchProperties="true"><con:settings/><con:testStep type="groovy" name="GenerateNickName" id="681227dd-cfd8-47d0-bff2-4b5e3f786b18"><con:settings/><con:config><script>def letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+def numbers = "1234567890";
+return generateRandomChars(letters, 4) + generateRandomChars(numbers, 4) 
+
+/*
+ * @author	Vasilis Petrou &lt;petrou82@gmail.com>
+ * @param		candidateChars a string with all the possible characters to generate a random sub-string
+ * @param		length an integer to define the number of random characters to be returned 
+ * @return	a random sub-string based on the candidateChars with specific length
+ */
+def generateRandomChars(String candidateChars, int length) {
+    StringBuilder sb = new StringBuilder();
+    Random random = new Random();
+    for (int i = 0; i &lt; length; i++) {
+        sb.append(candidateChars.charAt(random.nextInt(candidateChars
+                .length())));
+    }
+    return sb.toString();
+}
+</script></con:config></con:testStep><con:testStep type="request" name="AddContactWithAllFieldsValid" id="337e748a-4dc6-4446-a000-feae3d5a91b1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ContactsPortSoap11</con:interface><con:operation>addContact</con:operation><con:request name="AddContactWithAllFieldsValid" id="0d1b5172-62f2-4f43-88c0-4adbb294be9e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://www.vpetrou.com/contact-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:addContactRequest>\r
+         <con:name>Vasilis P.</con:name>\r
+         <con:nickName>${GenerateNickName#result}</con:nickName>\r
+         <con:category>Relevant</con:category>\r
+         <con:phone>00301234567890</con:phone>\r
+         <con:email>petrou82@gmail.com</con:email>\r
+         <con:city>Thessaloniki</con:city>\r
+         <con:country>Greece</con:country>\r
+      </con:addContactRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="faabe9ca-7dbb-45a8-ae44-b04b30ef5200"/><con:assertion type="Simple Contains" id="70cbe9eb-57d4-4787-ad8c-d035bc7b07ec" name="Contains"><con:configuration><token>SUCCESS</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="GetNewContactId" id="b5dd2d7e-5943-4462-9418-a54e9f50fd17"><con:settings/><con:config><script>import groovy.util.*;
+
+def currentTCName = testRunner.testCase.getName();
+def currentTSName = testRunner.testCase.testSuite.getName();
+def project = testRunner.testCase.testSuite.project;
+def tcase = project.testSuites[currentTSName].testCases[currentTCName];
+ 
+// Get the result of the target step AddContactWithAllFieldsValid
+def targetStepName = "AddContactWithAllFieldsValid";
+def tstep = tcase.getTestStepByName(targetStepName);
+def response= tstep.getPropertyValue("response");
+
+//Get the value of the target node 'contactId'
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context);
+def holder = groovyUtils.getXmlHolder("$response");
+def contactId = "//*:contactId";
+return holder.getNodeValue(contactId);
+</script></con:config></con:testStep><con:testStep type="request" name="RemoveContact" id="37f7c88c-ce15-413b-bbee-7e6f5d854f7f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ContactsPortSoap11</con:interface><con:operation>deleteContact</con:operation><con:request name="RemoveContact" id="a675d276-1652-496e-ab0f-9941a3c5e087"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://www.vpetrou.com/contact-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:deleteContactRequest>\r
+         <con:contactId>${GetNewContactId#result}</con:contactId>\r
+      </con:deleteContactRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="78417ad8-8bb1-42ff-8642-24ae7483da8f"/><con:assertion type="Simple Contains" id="e9e37c04-fb64-4132-b00a-299d5d0dcdbc" name="Contains"><con:configuration><token>SUCCESS</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d6509298-e1bb-4d16-8ebd-4965f01b6ae7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC-SRV-AddContacts-N-001" searchProperties="true"><con:settings/><con:testStep type="groovy" name="GenerateNickName" id="360e1216-7184-46e1-8a19-059d6fb4f9b0"><con:settings/><con:config><script>def letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+def numbers = "1234567890";
+return generateRandomChars(letters, 4) + generateRandomChars(numbers, 4) 
+
+/*
+ * @author	Vasilis Petrou &lt;petrou82@gmail.com>
+ * @param		candidateChars a string with all the possible characters to generate a random sub-string
+ * @param		length an integer to define the number of random characters to be returned 
+ * @return	a random sub-string based on the candidateChars with specific length
+ */
+def generateRandomChars(String candidateChars, int length) {
+    StringBuilder sb = new StringBuilder();
+    Random random = new Random();
+    for (int i = 0; i &lt; length; i++) {
+        sb.append(candidateChars.charAt(random.nextInt(candidateChars
+                .length())));
+    }
+    return sb.toString();
+}
+</script></con:config></con:testStep><con:testStep type="request" name="AddContactWithInvalidEmail" id="4b4b83c4-27a3-445d-a021-5c404c6e0d0b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ContactsPortSoap11</con:interface><con:operation>addContact</con:operation><con:request name="AddContactWithInvalidEmail" id="0d1b5172-62f2-4f43-88c0-4adbb294be9e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://www.vpetrou.com/contact-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:addContactRequest>\r
+         <con:name>Vasilis P.</con:name>\r
+         <con:nickName>${GenerateNickName#result}</con:nickName>\r
+         <con:category>Relevant</con:category>\r
+         <con:phone>00301234567890</con:phone>\r
+         <con:email>INVALID_EMAIL</con:email>\r
+         <con:city>Thessaloniki</con:city>\r
+         <con:country>Greece</con:country>\r
+      </con:addContactRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="faabe9ca-7dbb-45a8-ae44-b04b30ef5200"/><con:assertion type="Simple Contains" id="70cbe9eb-57d4-4787-ad8c-d035bc7b07ec" name="Contains"><con:configuration><token>(?s).*Validation failed*.*propertyPath=email*.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="01dfdf44-8cf5-4582-a676-7205f07213ab" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC-SRV-AddContacts-N-002" searchProperties="true"><con:settings/><con:testStep type="groovy" name="GenerateNickName" id="54f434b1-f7f0-4c47-9313-3918d6a67bc2"><con:settings/><con:config><script>def letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+def numbers = "1234567890";
+return generateRandomChars(letters, 4) + generateRandomChars(numbers, 4) 
+
+/*
+ * @author	Vasilis Petrou &lt;petrou82@gmail.com>
+ * @param		candidateChars a string with all the possible characters to generate a random sub-string
+ * @param		length an integer to define the number of random characters to be returned 
+ * @return	a random sub-string based on the candidateChars with specific length
+ */
+def generateRandomChars(String candidateChars, int length) {
+    StringBuilder sb = new StringBuilder();
+    Random random = new Random();
+    for (int i = 0; i &lt; length; i++) {
+        sb.append(candidateChars.charAt(random.nextInt(candidateChars
+                .length())));
+    }
+    return sb.toString();
+}
+</script></con:config></con:testStep><con:testStep type="request" name="AddContactWithInvalidPhone" id="cd8e235b-7ba2-467d-94fa-a1fff83d6a1e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ContactsPortSoap11</con:interface><con:operation>addContact</con:operation><con:request name="AddContactWithInvalidPhone" id="0d1b5172-62f2-4f43-88c0-4adbb294be9e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://www.vpetrou.com/contact-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:addContactRequest>\r
+         <con:name>Vasilis P.</con:name>\r
+         <con:nickName>${GenerateNickName#result}</con:nickName>\r
+         <con:category>Relevant</con:category>\r
+         <con:phone>INVALID_PHONE</con:phone>\r
+         <con:email>petrou82@gmail.com</con:email>\r
+         <con:city>Thessaloniki</con:city>\r
+         <con:country>Greece</con:country>\r
+      </con:addContactRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="faabe9ca-7dbb-45a8-ae44-b04b30ef5200"/><con:assertion type="Simple Contains" id="70cbe9eb-57d4-4787-ad8c-d035bc7b07ec" name="Contains"><con:configuration><token>(?s).*Validation failed*.*propertyPath=phone*.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="35d5309e-d1c2-4cfa-a62e-377172da5548" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TC-SRV-AddContacts-N-003" searchProperties="true"><con:settings/><con:testStep type="request" name="AddContactWithInvalidPhone" id="8399d54f-3ac4-4941-aa3c-7119546a208e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ContactsPortSoap11</con:interface><con:operation>addContact</con:operation><con:request name="AddContactWithInvalidPhone" id="0d1b5172-62f2-4f43-88c0-4adbb294be9e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://www.vpetrou.com/contact-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:addContactRequest>\r
+         <con:name>Vasilis P.</con:name>\r
+         <con:nickName>INVALID_NICKNAME</con:nickName>\r
+         <con:category>Relevant</con:category>\r
+         <con:phone>00301234567890</con:phone>\r
+         <con:email>petrou82@gmail.com</con:email>\r
+         <con:city>Thessaloniki</con:city>\r
+         <con:country>Greece</con:country>\r
+      </con:addContactRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="faabe9ca-7dbb-45a8-ae44-b04b30ef5200"/><con:assertion type="Simple Contains" id="70cbe9eb-57d4-4787-ad8c-d035bc7b07ec" name="Contains"><con:configuration><token>(?s).*Validation failed*.*propertyPath=nickName*.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

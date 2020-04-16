@@ -1,0 +1,109 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.vpetrou.com/contact-ws"
+           targetNamespace="http://www.vpetrou.com/contact-ws" elementFormDefault="qualified">
+
+    <xs:element name="getContactByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="contactId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getContactByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="contactInfo" type="tns:contactInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="contactInfo">
+        <xs:sequence>
+            <xs:element name="contactId" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="nickName" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getContactByNameRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getContactByNameResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="contactInfo" type="tns:contactInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllContactsRequest">
+        <xs:complexType/>
+    </xs:element>    
+    <xs:element name="getAllContactsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="contactInfo" type="tns:contactInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>   
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>     
+    <xs:element name="addContactRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="nickName" type="xs:string"/>
+                <xs:element name="category" type="xs:string"/>
+                <xs:element name="phone" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="city" type="xs:string"/>
+                <xs:element name="country" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addContactResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>            
+                <xs:element name="contactInfo" type="tns:contactInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateContactRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="contactInfo" type="tns:contactInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateContactResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteContactRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="contactId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteContactResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>                   
+</xs:schema>
