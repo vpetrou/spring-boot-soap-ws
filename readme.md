@@ -1,4 +1,4 @@
-<h1>SEETest Conference 2019 Buchurest</h1>
+<h1>SEETest Conference 2019 Bucharest</h1>
 
 <h3>Testing web services, with an object oriented way</h3>
 
